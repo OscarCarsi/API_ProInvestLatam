@@ -14,10 +14,34 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   InformacionBancaria.init({
-    folioInversion: DataTypes.STRING,
-    clabeInterbancaria: DataTypes.STRING,
-    cuenta: DataTypes.STRING,
-    idBanco: DataTypes.INTEGER
+    folioInversion: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
+      references: {
+        model: 'Inversionistas',
+        key: 'folioInversion',
+        as: 'folioInversion',
+        update: 'CASCADE'
+      }
+    },
+    clabeInterbancaria: {
+      type: DataTypes.STRING(18),
+      allowNull: false,
+    },
+    cuenta: {
+      type: DataTypes.STRING(20),
+      allowNull: false,
+    },
+    idBanco: {
+      type:DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'Bancos',
+        key: 'idBanco',
+        as: 'idBanco',
+        update: 'CASCADE'
+      }
+    }
   }, {
     sequelize,
     modelName: 'InformacionBancaria',

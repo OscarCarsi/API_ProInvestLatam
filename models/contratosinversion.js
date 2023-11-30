@@ -14,14 +14,56 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   ContratosInversion.init({
-    direccionIp: DataTypes.STRING,
-    contrato: DataTypes.TEXT,
-    idInversionista: DataTypes.INTEGER,
-    idTipo: DataTypes.INTEGER,
-    idOrigen: DataTypes.INTEGER,
-    folioInversion: DataTypes.STRING,
-    fecha: DataTypes.DATE,
-    importe: DataTypes.DECIMAL
+    direccionIp: {
+      type: DataTypes.STRING(20),
+      allowNull: false,
+    },
+    contrato: {
+      type: DataTypes.TEXT('long'),
+      allowNull: false,
+    },
+    idInversionista: {
+      type:DataTypes.INTEGER, 
+      allowNull: false,
+      references: {
+        model: 'Inversionistas',
+        key: 'idInversionista',
+        as: 'idInversionista',
+        update: 'CASCADE'
+      }
+    },
+    idTipo: {
+      type:DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'TiposInversion',
+        key: 'idTipo',
+        as: 'idTipo',
+        update: 'CASCADE'
+      },
+    },
+    idOrigen: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'OrigenesInversion',
+        key: 'idOrigen',
+        as: 'idOrigen',
+        update: 'CASCADE'
+      }
+    },
+    folioInversion: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
+    },
+    fecha: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+    importe: {
+      type: DataTypes.DECIMAL,
+      allowNull: false,
+    },
   }, {
     sequelize,
     modelName: 'ContratosInversion',
