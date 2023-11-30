@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "ProInvestLatam",
+    "password": "pr0!nv3s7l474m4dm!n",
+    "database": "ProInvestLatam",
+    "host": "proinvestlatam.database.windows.net",
+    "dialect": "mssql"
+  },
+  "test": {
+    "username": "ProInvestLatam",
+    "password": "pr0!nv3s7l474m4dm!n",
+    "database": "ProInvestLatam",
+    "host": "proinvestlatam.database.windows.net",
+    "dialect": "mssql"
+  },
+  "production": {
+    "username": "ProInvestLatam",
+    "password": "pr0!nv3s7l474m4dm!n",
+    "database": "ProInvestLatam",
+    "host": "proinvestlatam.database.windows.net",
+    "dialect": "mssql"
+  }
+}
