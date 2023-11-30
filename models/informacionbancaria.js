@@ -15,14 +15,15 @@ module.exports = (sequelize, DataTypes) => {
   }
   InformacionBancaria.init({
     folioInversion: {
-      type: DataTypes.STRING(50),
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: 'Inversionistas',
         key: 'folioInversion',
         as: 'folioInversion',
         update: 'CASCADE'
-      }
+      },
+      primaryKey: true,
     },
     clabeInterbancaria: {
       type: DataTypes.STRING(18),
