@@ -53,8 +53,11 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     folioInversion: {
-      type: DataTypes.STRING(50),
+      type: DataTypes.INTEGER,
       allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      unique: true,
     },
     fecha: {
       type: DataTypes.DATE,
