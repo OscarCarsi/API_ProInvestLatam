@@ -87,6 +87,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Inversionistas',
+    freezeTableName: true,
+    timestamps: false
   });
   return Inversionistas;
 };

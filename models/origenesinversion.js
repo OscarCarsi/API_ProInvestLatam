@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.hasMany(models.ContratosInversion, { foreignKey: 'idOrigen' });
     }
   }
   OrigenesInversion.init({
@@ -28,6 +29,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'OrigenesInversion',
+    freezeTableName: true,
+    timestamps: false
   });
   return OrigenesInversion;
 };
