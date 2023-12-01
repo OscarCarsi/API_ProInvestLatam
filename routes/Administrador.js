@@ -7,32 +7,33 @@ const {
 } = require('../controllers/Bancos');
 const{
     anadirDocumentoExpedienteInversionista,
-    obtenerDocumentosExpedienteInversionista,
+    encontrarDocumentosExpedienteInversionista,
     editarDocumentoExpedienteInversionista
-} = require('../controllers/DocumentosExpedienteInversionista');
+} = require('../controllers/DocumentosExpedienteInversionistas');
 const {
-    anadirOrigenesInversion,
+    anadirOrigenInversion,
     obtenerOrigenesInversion,
-    editarOrigenesInversion
+    editarOrigenInversion
 } = require('../controllers/OrigenesInversion');
 const {
     anadirTipoInversion,
     obtenerTiposInversion,
     editarTipoInversion
-} = require('../controllers/TipoInversion');
+} = require('../controllers/TiposInversion');
 const {validarJWT} = require('../middlewares/validarJWT');
-const router = express.Router();
+const router = Router();
 
 router.post('/login', credencialesAcceso);
 router.post('/bancos', [validarJWT], anadirBanco);
 router.get('/bancos', [validarJWT], obtenerBancos);
 router.put('/bancos/:id', [validarJWT], editarBanco);
 router.post('/documentosExpediente', [validarJWT], anadirDocumentoExpedienteInversionista);
-router.get('/documentosExpediente', [validarJWT], obtenerDocumentosExpedienteInversionista);
+router.get('/documentosExpediente', [validarJWT], encontrarDocumentosExpedienteInversionista);
 router.put('/documentosExpediente/:id', [validarJWT], editarDocumentoExpedienteInversionista);
-router.post('/origenesInversion', [validarJWT], anadirOrigenesInversion);
+router.post('/origenesInversion', [validarJWT], anadirOrigenInversion);
 router.get('/origenesInversion', [validarJWT], obtenerOrigenesInversion);
-router.put('/origenesInversion/:id', [validarJWT], editarOrigenesInversion);
+router.put('/origenesInversion/:id', [validarJWT], editarOrigenInversion);
 router.post('/tiposInversion', [validarJWT], anadirTipoInversion);
 router.get('/tiposInversion', [validarJWT], obtenerTiposInversion);
 router.put('/tiposInversion/:id', [validarJWT], editarTipoInversion);
+module.exports = router;
