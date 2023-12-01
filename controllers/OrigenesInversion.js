@@ -1,7 +1,7 @@
 const {response} = require('express');
 const origenesInversionDAO = require('../dao/OrigenesInversionDAO');
 
-const añadirOrigenInversion = async (req, res = response) => {
+const anadirOrigenInversion = async (req, res = response) => {
     const {nombre} = req.body;
     try {
         const origenInversionExiste = await origenesInversionDAO.encontrarOrigenInversionPorNombre(nombre);
@@ -42,7 +42,7 @@ const editarOrigenInversion = async (req, res = response) => {
 }
 
 module.exports = {
-    añadirOrigenInversion,
+    anadirOrigenInversion,
     obtenerOrigenesInversion,
     editarOrigenInversion
 }

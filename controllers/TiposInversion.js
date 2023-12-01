@@ -1,7 +1,7 @@
 const {response} = require('express');
 const tiposInversionDAO = require('../dao/TiposInversionDAO');
 
-const añadirTipoInversion = async (req, res = response) => {
+const anadirTipoInversion = async (req, res = response) => {
     const {nombre, descripcion, rendimiento} = req.body;
     const tipoInversion = {nombre, descripcion, rendimiento};
     try {
@@ -42,6 +42,7 @@ const editarTipoInversion = async (req, res = response) => {
 }
 
 module.exports = {
-    añadirTipoInversion,
-    obtenerTiposInversion
+    anadirTipoInversion,
+    obtenerTiposInversion, 
+    editarTipoInversion
 }

@@ -1,7 +1,7 @@
 const {response} = require('express');
 const bancosDAO = require('../dao/BancosDAO');
 
-const añadirBanco = async (req, res = response) => {
+const anadirBanco = async (req, res = response) => {
     const {nombre} = req.body;
     try {
         const bancoExiste = await bancosDAO.encontrarBancoPorNombre(nombre);
@@ -44,7 +44,7 @@ const editarBanco = async (req, res = response) => {
 
 
 module.exports = {
-    añadirBanco,
+    anadirBanco,
     obtenerBancos, 
     editarBanco
 }

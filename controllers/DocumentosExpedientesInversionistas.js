@@ -1,7 +1,7 @@
 const {response} = require('express');
 const documentosExpedienteInversionistaDAO = require('../dao/DocumentosExpedienteInversionistaDAO');
 
-const añadirDocumentoExpedienteInversionista = async (req, res = response) => {
+const anadirDocumentoExpedienteInversionista = async (req, res = response) => {
     const {nombre} = req.body;
     try {
         const documentoExpedienteInversionistaExiste = await documentosExpedienteInversionistaDAO.encontrarDocumentoExpedienteInversionistaPorNombre(nombre);
@@ -42,7 +42,7 @@ const editarDocumentoExpedienteInversionista = async (req, res = response) => {
 }
 
 module.exports = {
-    añadirDocumentoExpedienteInversionista,
+    anadirDocumentoExpedienteInversionista,
     encontrarDocumentosExpedienteInversionista, 
     editarDocumentoExpedienteInversionista
 }

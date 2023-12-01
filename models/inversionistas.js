@@ -31,7 +31,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     apellidoMaterno: {
       type: DataTypes.STRING(50),
-      allowNull: false,
     },
     correoElectronico: {
       type: DataTypes.STRING(50),
