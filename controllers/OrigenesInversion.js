@@ -4,12 +4,12 @@ const origenesInversionDAO = require('../dao/OrigenesInversionDAO');
 const anadirOrigenInversion = async (req, res = response) => {
     const {nombre} = req.body;
     try {
-        const origenInversionExiste = await origenesInversionDAO.encontrarOrigenInversionPorNombre(nombre);
+        const origenInversionExiste = await origenesInversionDAO.encontrarOrigenesInversionPorNombre(nombre);
         if(origenInversionExiste){
             return res.status(400).json({message: "El origen de inversión ya existe"});
         }
         else{
-            const origenInversion = await origenesInversionDAO.crearOrigenInversion({nombre});
+            const origenInversion = await origenesInversionDAO.crearOrigenInversion({nombreOrigen: nombre});
             res.status(201).json(origenInversion);
         }
     } catch (error) {
@@ -32,17 +32,36 @@ const editarOrigenInversion = async (req, res = response) => {
     const {idOrigen} = req.params;
     const {nombreOrigen} = req.body;
     try {
-        const origenInversionEditar = {idOrigen, nombreOrigen};
-        const origenInversionEditado = await origenesInversionDAO.editarOrigenInversion(origenInversionEditar);
-        res.status(200).json(origenInversionEditado);
+        const origenInversionExiste = await origenesInversionDAO.encontrarOrigenInversionPorNombre(nombreOrigen);
+        if(origenInversionExiste){
+            return res.status(400).json({message: "El origen de inversión ya existe"});
+        }
+        else{
+            const origenInversionEditar = {idOrigen, nombreOrigen};
+            const origenInversionEditado = await origenesInversionDAO.editarOrigenInversion(origenInversionEditar);
+            res.status(200).json(origenInversionEditado);
+        }
+        
     } catch (error) {
         console.error(error);
         res.status(500).json({message: "No se pudo editar el origen de inversión", error});
     }
 }
 
+const eliminarOrigenInversion = async (req, res = response) => {
+    const {id} = req.params;
+    try {
+        await origenesInversionDAO.eliminarOrigenInversion(id);
+        res.status(200).json({ message: 'Origen de inversión eliminado' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({message: "No se pudo eliminar el origen de inversión", error});
+    }
+}
+
 module.exports = {
     anadirOrigenInversion,
     obtenerOrigenesInversion,
-    editarOrigenInversion
+    editarOrigenInversion,
+    eliminarOrigenInversion
 }

@@ -10,7 +10,10 @@ class BancosDAO {
         return await Bancos.findOne({where: {banco: nombre}});
     }
     static async editarBanco(banco) {
-        return await Bancos.update(banco, {where: {id: banco.id}});
+        return await Bancos.update(banco, {where: {idBanco: banco.id}, returning: true, plain: true});
+    }
+    static async eliminarBanco(id) {
+        return await Bancos.destroy({where: {idBanco: id}});
     }
 }
 module.exports = BancosDAO;
