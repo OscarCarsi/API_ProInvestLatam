@@ -10,7 +10,7 @@ class OrigenesInversionDAO {
         return await OrigenesInversion.findOne({where: {nombreOrigen: nombre}});
     }
     static async editarOrigenInversion(origenInversion) {
-        return await OrigenesInversion.update(origenInversion, {where: {idOrigen: origenInversion.id}});
+        return await OrigenesInversion.update(origenInversion, {where: {idOrigen: origenInversion.idOrigen}, returning: true, plain: true});
     }
     static async eliminarOrigenInversion(id) {
         return await OrigenesInversion.destroy({where: {idOrigen: id}});

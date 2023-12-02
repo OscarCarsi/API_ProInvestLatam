@@ -29,15 +29,15 @@ const obtenerOrigenesInversion = async (req, res = response) => {
 }
 
 const editarOrigenInversion = async (req, res = response) => {
-    const {idOrigen} = req.params;
-    const {nombreOrigen} = req.body;
+    const {id} = req.params;
+    const {nombre} = req.body;
     try {
-        const origenInversionExiste = await origenesInversionDAO.encontrarOrigenInversionPorNombre(nombreOrigen);
+        const origenInversionExiste = await origenesInversionDAO.encontrarOrigenesInversionPorNombre(nombre);
         if(origenInversionExiste){
             return res.status(400).json({message: "El origen de inversión ya existe"});
         }
         else{
-            const origenInversionEditar = {idOrigen, nombreOrigen};
+            const origenInversionEditar = {idOrigen: id, nombreOrigen: nombre};
             const origenInversionEditado = await origenesInversionDAO.editarOrigenInversion(origenInversionEditar);
             res.status(200).json(origenInversionEditado);
         }

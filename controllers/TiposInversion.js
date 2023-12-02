@@ -29,7 +29,7 @@ const obtenerTiposInversion = async (req, res = response) => {
 }
 
 const editarTipoInversion = async (req, res = response) => {
-    const {idTipo} = req.params;
+    const {id} = req.params;
     const {nombre, descripcion, rendimiento} = req.body;
     try {
         const tipoInversionExiste = await tiposInversionDAO.encontrarTipoInversionPorNombre(nombre);
@@ -37,7 +37,7 @@ const editarTipoInversion = async (req, res = response) => {
             return res.status(400).json({message: "El tipo de inversión ya existe"});
         }
         else{
-            const tipoInversionEditar = {idTipo, nombre, descripcion, rendimiento};
+            const tipoInversionEditar = {idTipo: id, nombre, descripcion, rendimiento};
             const tipoInversionEditado = await tiposInversionDAO.editarTipoInversion(tipoInversionEditar);
             res.status(200).json(tipoInversionEditado);
         }
@@ -51,7 +51,7 @@ const eliminarTipoInversion = async (req, res = response) => {
     const {id} = req.params;
     try {
         const tipoInversionEliminado = await tiposInversionDAO.eliminarTipoInversion(id);
-        res.status(200).json(tipoInversionEliminado);
+        res.status(200).json({ message: 'Tipo de inversión eliminado'});
     } catch (error) {
         console.error(error);
         res.status(500).json({message: "No se pudo eliminar el tipo de inversión", error});
