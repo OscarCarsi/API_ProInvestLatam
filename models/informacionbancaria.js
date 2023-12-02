@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'Inversionistas',
+        model: 'ContratosInversion',
         key: 'folioInversion',
         as: 'folioInversion',
         update: 'CASCADE'
@@ -46,6 +46,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'InformacionBancaria',
+    freezeTableName: true,
+    timestamps: false
   });
   return InformacionBancaria;
 };

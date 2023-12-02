@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.hasMany(models.ContratosInversion, { foreignKey: 'idTipo' });
     }
   }
   TiposInversion.init({
@@ -26,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     descripcion: {
-      type: DataTypes.TEXT(200),
+      type: DataTypes.STRING,
       allowNull: false,
     },
     rendimiento: {
@@ -36,6 +37,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'TiposInversion',
+    freezeTableName: true,
+    timestamps: false
   });
   return TiposInversion;
 };

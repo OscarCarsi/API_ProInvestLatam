@@ -31,7 +31,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     apellidoMaterno: {
       type: DataTypes.STRING(50),
-      allowNull: false,
     },
     correoElectronico: {
       type: DataTypes.STRING(50),
@@ -88,6 +87,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Inversionistas',
+    freezeTableName: true,
+    timestamps: false
   });
   return Inversionistas;
 };

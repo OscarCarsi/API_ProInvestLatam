@@ -10,7 +10,10 @@ class TiposInversionDAO {
         return await TiposInversion.findOne({where: { nombre}});
     }
     static async editarTipoInversion(tipoInversion) {
-        return await TiposInversion.update(tipoInversion, {where: {id: tipoInversion.id}});
+        return await TiposInversion.update(tipoInversion, {where: {idTipo: tipoInversion.idTipo}, returning: true, plain: true});
+    }
+    static async eliminarTipoInversion(id) {
+        return await TiposInversion.destroy({where: {idTipo: id}});
     }
 }
 module.exports = TiposInversionDAO;

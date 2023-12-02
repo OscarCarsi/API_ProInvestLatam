@@ -10,8 +10,8 @@ const hash = async (text) => {
 }
 
 const credencialesAcceso = async (req, res = response) => {
-    const {usuario, contrasenia} = req.body;
-    const constraseniaEncryptada = await hash(contrasenia);
+    const {usuario, contrasena} = req.body;
+    const constraseniaEncryptada = await hash(contrasena);
     try {
         const credenciales = await credencialesAdministradorDAO.encontrarCredencialesPorUsuarioContrasenia(usuario, constraseniaEncryptada);
         const token = await generarJWT(credenciales);

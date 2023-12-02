@@ -10,7 +10,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      this.belongsTo(models.TiposInversion, { foreignKey: 'idTipo' });
+      this.belongsTo(models.OrigenesInversion, { foreignKey: 'idOrigen' });
     }
   }
   ContratosInversion.init({
@@ -19,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     contrato: {
-      type: DataTypes.TEXT('long'),
+      type: DataTypes.STRING,
       allowNull: false,
     },
     idInversionista: {
@@ -70,6 +71,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'ContratosInversion',
+    freezeTableName: true,
+    timestamps: false
   });
   return ContratosInversion;
 };

@@ -8,4 +8,18 @@ class Server {
         this.middlewares();
         this.routes();
     }
+    middlewares(){
+        this.app.use(cors());
+        this.app.use(express.json());
+        this.app.use(express.static('public'));
+    }
+    routes(){
+        this.app.use('/apiproinvest/admin', require('../routes/Administrador'));
+    }
+    listen(){
+        this.app.listen(this.port, () => {
+            console.log(`Server listening on port ${this.port}`)
+        })
+    }
 }
+module.exports = Server;
