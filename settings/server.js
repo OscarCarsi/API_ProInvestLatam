@@ -1,6 +1,5 @@
 const express = require ('express');
 const cors = require('cors');
-
 class Server {
     constructor (){
         this.app = express();
@@ -15,6 +14,7 @@ class Server {
     }
     routes(){
         this.app.use('/apiproinvest/admin', require('../routes/Administrador'));
+        this.app.use('/apiproinvest/inversionista', require('../routes/Inversionista'));
     }
     listen(){
         this.app.listen(this.port, () => {

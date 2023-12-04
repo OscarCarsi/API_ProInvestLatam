@@ -1,7 +1,7 @@
 const {response} = require('express');
 const crypto = require('crypto');
 const credencialesAdministradorDAO = require('../dao/CredencialesAdministradorDAO');
-const {generarJWT} = require('../helpers/crear-jwt');
+const {generarJWT} = require('../helpers/crear-jwt-administrador');
 
 const hash = async (text) => {
     const hash = crypto.createHash('sha256');
