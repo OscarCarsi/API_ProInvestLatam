@@ -21,11 +21,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     contrato: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     idInversionista: {
       type:DataTypes.INTEGER, 
-      allowNull: false,
+      allowNull: true,
       references: {
         model: 'Inversionistas',
         key: 'idInversionista',
@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     idTipo: {
       type:DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: 'TiposInversion',
         key: 'idTipo',
@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     idOrigen: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: 'OrigenesInversion',
         key: 'idOrigen',
@@ -62,10 +62,30 @@ module.exports = (sequelize, DataTypes) => {
     },
     fecha: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
     },
     importe: {
       type: DataTypes.DECIMAL,
+      allowNull: true,
+    },
+    plazoAnios: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    estado: {
+      type: DataTypes.STRING(30),
+      allowNull: false,
+    },
+    ultimaActualizacion: {
+      type: DataTypes.TIME,
+      allowNull: false,
+    },
+    smsVerificacion: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
+    correoVerificacion: {
+      type: DataTypes.BOOLEAN,
       allowNull: false,
     },
   }, {

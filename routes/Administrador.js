@@ -24,7 +24,7 @@ const {
     editarTipoInversion,
     eliminarTipoInversion
 } = require('../controllers/TiposInversion');
-const {validarJWT} = require('../middlewares/validarJWT');
+const {validarJWT} = require('../middlewares/validarJWT-administrador');
 const router = Router();
 
 router.post('/login', credencialesAcceso);

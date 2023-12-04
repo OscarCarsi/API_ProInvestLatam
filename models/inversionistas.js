@@ -49,7 +49,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     empresaTrabajo: {
-      type: DataTypes.STRING(13),
+      type: DataTypes.STRING(50),
       allowNull: false,
     },
     gradoAcademico: {
@@ -57,33 +57,50 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     calle: {
-      type: DataTypes.STRING(50),
-      allowNull: false,
+      type: DataTypes.STRING,
+      validate: {
+        len: [1, 50]
+      },
+      allowNull: true,
     },
     colonia: {
-      type: DataTypes.STRING(50),
-      allowNull: false,
+      type: DataTypes.STRING,
+      validate: {
+        len: [1, 50]
+      },
+      allowNull: true,
     },
     codigoPostal: {
-      type: DataTypes.STRING(5),
-      allowNull: false,
+      type: DataTypes.STRING,
+      
+      allowNull: true,
     },
     estado: {
-      type: DataTypes.STRING(50),
-      allowNull: false,
+      type: DataTypes.STRING,
+      validate: {
+        len: [1, 50]
+      },
+      allowNull: true,
     },
     municipio: {
-      type: DataTypes.STRING(50),
-      allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        len: [1, 50]
+      }
     },
     numeroExterior: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     numeroInterior: {
       type: DataTypes.INTEGER,
       allowNull: true,
-    }
+    },
+    profesion: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
+    },
   }, {
     sequelize,
     modelName: 'Inversionistas',
