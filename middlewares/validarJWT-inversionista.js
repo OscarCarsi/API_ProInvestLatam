@@ -12,13 +12,13 @@ const validarJWT = async (req = request, res = response, next) => {
 
     try {
         const { rfc } = jwt.verify(token, process.env.LLAVEPRIVADA);
-        req.usuario = rfc;
+        req.rfc = rfc;
         next();
     } catch (error) {
         if (error.name === 'TokenExpiredError' && refreshToken) {
             try {
                 const newToken = jwt.verify(refreshToken, process.env.LLAVEPRIVADA);
-                req.usuario = newToken.rfc;
+                req.rfc = newToken.rfc;
                 const newJWT = await generarJWT(newToken.rfc);
                 const newRefreshToken = await generarRefreshToken(newToken.rfc);
                 res.status(200).json({

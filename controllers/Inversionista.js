@@ -27,8 +27,18 @@ const anadirInformacionDomicilioInversionista = async (req, res = response) => {
         res.status(500).json({message: error});
     }
 }
+const obtenerInversionistas = async (req, res = response) => {
+    try {
+        const inversionistas = await inversionistasDAO.encontrarInversionistas();
+        res.status(200).json(inversionistas);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({message: error});
+    }
+}
 
 module.exports = {
     anadirInformacionPersonalInversionista,
-    anadirInformacionDomicilioInversionista
+    anadirInformacionDomicilioInversionista,
+    obtenerInversionistas
 }

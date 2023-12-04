@@ -24,6 +24,10 @@ const {
     editarTipoInversion,
     eliminarTipoInversion
 } = require('../controllers/TiposInversion');
+const {obtenerContratosCompletos} = require('../controllers/ContratosInversion');
+const {obtenerExpedientesInversionistasIdDocumentoIdInversionista} = require('../controllers/ExpedientesInversionistas');
+const {encontrarInformacionBancariaFolioInversion} = require('../controllers/InformacionBancaria');
+const {obtenerInversionistas} = require('../controllers/Inversionista');
 const {validarJWT} = require('../middlewares/validarJWT-administrador');
 const router = Router();
 
@@ -44,4 +48,8 @@ router.post('/tiposInversion', [validarJWT], anadirTipoInversion);
 router.get('/tiposInversion', [validarJWT], obtenerTiposInversion);
 router.put('/tiposInversion/:id', [validarJWT], editarTipoInversion);
 router.delete('/tiposInversion/:id', [validarJWT], eliminarTipoInversion);
+router.get('/contratosInversion', [validarJWT], obtenerContratosCompletos);
+router.get('/expedientesInversionistas/:idDocumento/:idInversionista', [validarJWT], obtenerExpedientesInversionistasIdDocumentoIdInversionista);
+router.get('/informacionBancaria/:folioInversion', [validarJWT], encontrarInformacionBancariaFolioInversion);
+router.get('/inversionistas', [validarJWT], obtenerInversionistas);
 module.exports = router;
