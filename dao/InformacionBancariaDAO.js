@@ -7,3 +7,4 @@ class InformacionBancariaDAO {
         return await InformacionBancaria.findByPk(folioInversion);
     }
 }
+module.exports = InformacionBancariaDAO;

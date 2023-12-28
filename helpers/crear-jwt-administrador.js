@@ -8,7 +8,7 @@ const generarJWT = (usuario = '') =>{
         const payload = {usuario};
 
         jwt.sign(payload, process.env.LLAVEPRIVADA,{
-            expiresIn: '1h'},
+            expiresIn: '2h'},
             (err,token)=>{
                 if(err){
                     reject('No se pudo crear el token');
@@ -19,7 +19,6 @@ const generarJWT = (usuario = '') =>{
     })
 
 }
-
 module.exports = {
     generarJWT
 }
