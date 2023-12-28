@@ -41,7 +41,7 @@ router.get('/documentosExpediente', [validarJWT], encontrarDocumentosExpedienteI
 router.put('/documentosExpediente/:id', [validarJWT], editarDocumentoExpedienteInversionista);
 router.delete('/documentosExpediente/:id', [validarJWT], eliminarDocumentoExpedienteInversionista);
 router.post('/origenesInversion', [validarJWT], anadirOrigenInversion);
-router.get('/origenesInversion', [validarJWT], obtenerOrigenesInversion);
+router.post('/origenesInversion', [validarJWT], obtenerOrigenesInversion);
 router.put('/origenesInversion/:id', [validarJWT], editarOrigenInversion);
 router.delete('/origenesInversion/:id', [validarJWT], eliminarOrigenInversion);
 router.post('/tiposInversion', [validarJWT], anadirTipoInversion);

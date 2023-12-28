@@ -3,9 +3,9 @@ const expedientesInversionistasDAO = require('../dao/ExpedientesInversionistasDA
 
 const subirExpedienteInversionista = async (req, res = response) => {
     const {idDocumento, idInversionista} = req.params;
-    const {nombreArchivo} = req.body;
+    const {nombreArchivo, enlaceBucket} = req.body;
     try {
-        const expedienteInversionistaNuevo = {idDocumento, idInversionista, nombreArchivo};
+        const expedienteInversionistaNuevo = {idDocumento, idInversionista, nombreArchivo, enlaceBucket};
         const expedienteInversionista = await expedientesInversionistasDAO.crearExpedienteInversionista(expedienteInversionistaNuevo);
         res.status(201).json(expedienteInversionista);
     } catch (error) {

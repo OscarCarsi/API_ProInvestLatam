@@ -1,12 +1,11 @@
 const {response} = require('express');
 const contratosInversionDAO = require('../dao/ContratosInversionDAO');
+const {generarJWT} = require('../helpers/crear-jwt-inversionista');
 
 const crearContratoInversion = async (req, res = response) => {
-    const {direccionIp, idInversionista} = req.body;
+    const {direccionIp, idInversionista, ultimaActualizacion} = req.body;
     try {
         const estado = "PERSONAL";
-        const fecha = new Date();
-        const ultimaActualizacion = `${fecha.getHours()}:${fecha.getMinutes()}:${fecha.getSeconds()}`;
         const contratoInversionNuevo = {direccionIp, idInversionista, estado, ultimaActualizacion};
         const contratoInversion = await contratosInversionDAO.crearContratoInversion(contratoInversionNuevo);
         res.status(201).json(contratoInversion);
@@ -44,9 +43,11 @@ const editarEstadoUltimaActualizacionContratoInversion = async (req, res = respo
 }
 const agregarVerificacionesSms = async (req, res = response) => {
     const {idInversionista} = req.params;
+    const {direccionIp} = req.body;
     try {
         const contratoInversion = await contratosInversionDAO.agregarVerificacionesSms(idInversionista);
-        res.status(200).json(contratoInversion);
+        const token = await generarJWT(direccionIp);
+        res.status(200).json({informacionContrato: contratoInversion, token});
     } catch (error) {
         console.error(error);
         res.status(500).json({message: "No se pudo agregar verificación de SMS", error});
@@ -54,9 +55,11 @@ const agregarVerificacionesSms = async (req, res = response) => {
 }
 const agregarVerificacionesCorreo = async (req, res = response) => {
     const {idInversionista} = req.params;
+    const {direccionIp} = req.body;
     try {
         const contratoInversion = await contratosInversionDAO.agregarVerificacionesCorreo(idInversionista);
-        res.status(200).json(contratoInversion);
+        const token = await generarJWT(direccionIp);
+        res.status(200).json({informacionContrato: contratoInversion, token});
     } catch (error) {
         console.error(error);
         res.status(500).json({message: "No se pudo agregar verificación de correo", error});
@@ -78,7 +81,8 @@ const obtenerContratoPorIP = async (req, res = response) => {
     const {direccionIp} = req.body;
     try {
         const contratoInversion = await contratosInversionDAO.obtenerContratoInversionistaPorIP(direccionIp);
-        res.status(200).json(contratoInversion);
+        const token = await generarJWT(direccionIp);
+        res.status(200).json({informacionContrato: contratoInversion, token});
     } catch (error) {
         console.error(error);
         res.status(500).json({message: "No se pudo obtener el contrato", error});

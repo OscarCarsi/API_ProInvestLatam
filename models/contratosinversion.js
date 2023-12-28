@@ -73,7 +73,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
     },
     estado: {
-      type: DataTypes.STRING(30),
+      type: DataTypes.STRING,
       allowNull: false,
     },
     ultimaActualizacion: {
@@ -82,11 +82,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     smsVerificacion: {
       type: DataTypes.BOOLEAN,
-      allowNull: false,
+      allowNull: true,
     },
     correoVerificacion: {
       type: DataTypes.BOOLEAN,
-      allowNull: false,
+      allowNull: true,
     },
   }, {
     sequelize,

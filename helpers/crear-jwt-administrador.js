@@ -8,7 +8,7 @@ const generarJWT = (usuario = '') =>{
         const payload = {usuario};
 
         jwt.sign(payload, process.env.LLAVEPRIVADA,{
-            expiresIn: '1h'},
+            expiresIn: '2h'},
             (err,token)=>{
                 if(err){
                     reject('No se pudo crear el token');
@@ -19,22 +19,6 @@ const generarJWT = (usuario = '') =>{
     })
 
 }
-const generarRefreshToken = (usuario) => {
-    return new Promise((resolve, reject) => {
-        const payload = { usuario };
-        jwt.sign(payload, process.env.LLAVEPRIVADA, {
-            expiresIn: '5h'
-        }, (err, token) => {
-            if (err) {
-                console.log(err);
-                reject('No se pudo generar el refresh token');
-            } else {
-                resolve(token);
-            }
-        });
-    });
-}
 module.exports = {
-    generarJWT,
-    generarRefreshToken
+    generarJWT
 }

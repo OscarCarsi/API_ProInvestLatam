@@ -1,14 +1,14 @@
 const jwt = require('jsonwebtoken');
 
 
-const generarJWT = (rfc = '') =>{
+const generarJWT = (direccionIp = '') =>{
 
     return new Promise((resolve, reject)=>{
 
-        const payload = {rfc};
+        const payload = {direccionIp};
 
         jwt.sign(payload, process.env.LLAVEPRIVADA,{
-            expiresIn: '30m'},
+            expiresIn: '10m'},
             (err,token)=>{
                 if(err){
                     reject('No se pudo crear el token');
@@ -19,22 +19,7 @@ const generarJWT = (rfc = '') =>{
     })
 
 }
-const generarRefreshToken = (rfc) => {
-    return new Promise((resolve, reject) => {
-        const payload = { rfc };
-        jwt.sign(payload, process.env.LLAVEPRIVADA, {
-            expiresIn: '5h'
-        }, (err, token) => {
-            if (err) {
-                console.log(err);
-                reject('No se pudo generar el refresh token');
-            } else {
-                resolve(token);
-            }
-        });
-    });
-}
 
 module.exports = {
-    generarJWT, generarRefreshToken
+    generarJWT
 }

@@ -13,6 +13,14 @@ const {
     obtenerContratoPorIP,
     obtenerContratoPorFolio
 }  = require('../controllers/ContratosInversion');
+const {
+    direccionesGet, 
+    obtenerTodasLasColonias,
+    obtenerColoniasPorCodigoPostal,
+    obtenerNombresColoniasPorCodigoPostal,
+    obtenerEstados, 
+    obtenerCodigoPostalPorColonia
+    } = require('../controllers/Direcciones');
 const {obtenerBancos} = require('../controllers/Bancos');
 const {encontrarDocumentosExpedienteInversionista} = require('../controllers/DocumentosExpedienteInversionistas');
 const {subirExpedienteInversionista} = require('../controllers/ExpedientesInversionistas');
@@ -30,13 +38,18 @@ router.put('/contratosInversion/estado/:idInversionista', [validarJWT], editarEs
 router.put('/contratosInversion/sms/:idInversionista', [validarJWT], agregarVerificacionesSms);
 router.put('/contratosInversion/correo/:idInversionista', [validarJWT], agregarVerificacionesCorreo);
 router.put('/contratosInversion/contrato/:idInversionista', [validarJWT], agregarContratoCompletoContratoInversion);
-router.get('/contratosInversion', [validarJWT], obtenerContratoPorIP);
-router.get('/contratosInversion/:folioInversion', [validarJWT], obtenerContratoPorFolio);
+router.post('/contratosInversion/obtenerIp', obtenerContratoPorIP);
+router.get('/contratosInversion/:folioInversion',  obtenerContratoPorFolio);
 router.get('/bancos', [validarJWT], obtenerBancos);
-router.get('/documentosExpediente/:idInversionista', [validarJWT], encontrarDocumentosExpedienteInversionista);
-router.post('/expedientesInversionistas', [validarJWT], subirExpedienteInversionista);
-router.post('/informacionBancaria', [validarJWT], crearInformacionBancaria);
-router.get('/origenesInversion', [validarJWT], obtenerOrigenesInversion);
+router.get('/documentosExpediente', [validarJWT], encontrarDocumentosExpedienteInversionista);
+router.post('/expedientesInversionistas/:idDocumento/:idInversionista', [validarJWT], subirExpedienteInversionista);
+router.post('/informacionBancaria/:folioInversion', [validarJWT], crearInformacionBancaria);
+router.post('/origenesInversion', obtenerOrigenesInversion);
 router.get('/tiposInversion', [validarJWT], obtenerTiposInversion);
-
+router.get('/direcciones', direccionesGet);
+router.get('/colonias', obtenerTodasLasColonias);
+router.post('/colonia/:cp', obtenerColoniasPorCodigoPostal);
+router.get('/nombresColonia/:cp', obtenerNombresColoniasPorCodigoPostal);
+router.get('/estados', obtenerEstados);
+router.get('/codigoPostal/:colonia', obtenerCodigoPostalPorColonia);
 module.exports = router;

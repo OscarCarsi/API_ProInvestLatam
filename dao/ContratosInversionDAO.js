@@ -7,7 +7,7 @@ class ContratosInversionDAO {
         return await ContratosInversion.update(contratoInversion, {where: { idInversionista: contratoInversion.idInversionista }, returning: true, plain: true});
     }
     static async obtenerContratoInversionistaPorIP(direccionIp) {
-        return await ContratosInversion.findOne({where: direccionIp});
+        return await ContratosInversion.findOne({ where: { direccionIp: direccionIp } });
     }
     
     static async agregarVerificacionesSms( idInversionista) {
