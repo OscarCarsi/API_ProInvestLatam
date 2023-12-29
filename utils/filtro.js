@@ -38,10 +38,10 @@ function procesarArchivoXML() {
         NewDataSet: {
           Table: datosFiltrados.map(item => ({
             $: { xmlns: 'NewDataSet' },
-            d_codigo: item.d_codigo,
-            d_asenta: item.d_asenta,
-            D_mnpio: item.D_mnpio,
-            d_estado: item.d_estado,
+            CodigoPostal: item.d_codigo,
+            Colonia: item.d_asenta,
+            Municipio: item.D_mnpio,
+            Estado: item.d_estado,
           })),
         },
       };
