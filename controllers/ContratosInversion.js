@@ -5,7 +5,7 @@ const {generarJWT} = require('../helpers/crear-jwt-inversionista');
 const crearContratoInversion = async (req, res = response) => {
     const {direccionIp, idInversionista, ultimaActualizacion} = req.body;
     try {
-        const estado = "PERSONAL";
+        const estado = "VERIFICACION";
         const contratoInversionNuevo = {direccionIp, idInversionista, estado, ultimaActualizacion};
         const contratoInversion = await contratosInversionDAO.crearContratoInversion(contratoInversionNuevo);
         res.status(201).json(contratoInversion);
@@ -29,10 +29,8 @@ const editarInversionContratoInversion = async (req, res = response) => {
 }
 const editarEstadoUltimaActualizacionContratoInversion = async (req, res = response) => {
     const {idInversionista} = req.params;
-    const {estado} = req.body;
+    const {estado, ultimaActualizacion} = req.body;
     try {
-        const fecha = new Date();
-        const ultimaActualizacion = `${fecha.getHours()}:${fecha.getMinutes()}:${fecha.getSeconds()}`;
         const contratoInversionNuevo = {idInversionista, estado, ultimaActualizacion};
         const contratoInversion = await contratosInversionDAO.editarContratoInversionista(contratoInversionNuevo);
         res.status(200).json(contratoInversion);
