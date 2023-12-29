@@ -2,11 +2,7 @@ const xmlLoader = require('../utils/xmlLoader');
 const{response} = require('express');
 const direccionesDAO = require('../dao/DireccionesDAO');
 const {generarJWT} = require('../helpers/crear-jwt-inversionista');
-const direccionesGet = async (req, res = response) => {
-    res.json({
-        msg:" api GET desde controlador"
-    });
-}
+
 
 const obtenerTodasLasColonias = async (req, res = response) => {
   const todasLasColonias = xmlLoader.obtenerTodasLasColonias();
@@ -59,7 +55,6 @@ const obtenerCodigoPostalPorColonia = async (req, res = response) => {
 }
 
 module.exports = {
-    direccionesGet,
     obtenerTodasLasColonias,
     obtenerColoniasPorCodigoPostal,
     obtenerNombresColoniasPorCodigoPostal,

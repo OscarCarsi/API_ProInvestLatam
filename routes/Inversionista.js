@@ -14,7 +14,6 @@ const {
     obtenerContratoPorFolio
 }  = require('../controllers/ContratosInversion');
 const {
-    direccionesGet, 
     obtenerTodasLasColonias,
     obtenerColoniasPorCodigoPostal,
     obtenerNombresColoniasPorCodigoPostal,
@@ -46,7 +45,8 @@ router.post('/expedientesInversionistas/:idDocumento/:idInversionista', [validar
 router.post('/informacionBancaria/:folioInversion', [validarJWT], crearInformacionBancaria);
 router.post('/origenesInversion', obtenerOrigenesInversion);
 router.get('/tiposInversion', [validarJWT], obtenerTiposInversion);
-router.get('/direcciones', direccionesGet);
+
+
 router.get('/colonias', obtenerTodasLasColonias);
 router.post('/colonia/:cp', obtenerColoniasPorCodigoPostal);
 router.get('/nombresColonia/:cp', obtenerNombresColoniasPorCodigoPostal);
