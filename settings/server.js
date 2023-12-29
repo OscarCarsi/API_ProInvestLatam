@@ -1,10 +1,12 @@
 const express = require ('express');
 const cors = require('cors');
+const xmlLoader = require('../utils/xmlLoader');
 class Server {
     constructor (){
         this.app = express();
         this.port = process.env.PORT;
         this.middlewares();
+        xmlLoader.cargarDatosDesdeXML();
         this.routes();
     }
     middlewares(){
