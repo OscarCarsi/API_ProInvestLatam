@@ -8,7 +8,7 @@ const generarJWT = (direccionIp = '') =>{
         const payload = {direccionIp};
 
         jwt.sign(payload, process.env.LLAVEPRIVADA,{
-            expiresIn: '10m'},
+            expiresIn: '90m'},
             (err,token)=>{
                 if(err){
                     reject('No se pudo crear el token');

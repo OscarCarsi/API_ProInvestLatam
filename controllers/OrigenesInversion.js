@@ -19,16 +19,10 @@ const anadirOrigenInversion = async (req, res = response) => {
 }
 
 const obtenerOrigenesInversion = async (req, res = response) => {
-    const {direccionIp} = req.body;
     try {
-        if (direccionIp) {
-            const origenesInversion = await origenesInversionDAO.encontrarOrigenesInversion();
-            const token = await generarJWT(direccionIp);
-            res.status(200).json({origenesInversion, token});
-        }else {
-            const origenesInversion = await origenesInversionDAO.encontrarOrigenesInversion();
-            res.status(200).json(origenesInversion);
-        }
+        const origenesInversion = await origenesInversionDAO.encontrarOrigenesInversion();
+        const token = await generarJWT(direccionIp);
+        res.status(200).json({origenesInversion, token});
     } catch (error) {
         console.error(error);
         res.status(500).json({message: "No se pudo obtener los origenes de inversión", error});

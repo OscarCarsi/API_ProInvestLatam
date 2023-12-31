@@ -43,7 +43,7 @@ router.get('/bancos', [validarJWT], obtenerBancos);
 router.get('/documentosExpediente', [validarJWT], encontrarDocumentosExpedienteInversionista);
 router.post('/expedientesInversionistas/:idDocumento/:idInversionista', [validarJWT], subirExpedienteInversionista);
 router.post('/informacionBancaria/:folioInversion', [validarJWT], crearInformacionBancaria);
-router.post('/origenesInversion', obtenerOrigenesInversion);
+router.get('/origenesInversion',[validarJWT], obtenerOrigenesInversion);
 router.get('/tiposInversion', [validarJWT], obtenerTiposInversion);
 
 
