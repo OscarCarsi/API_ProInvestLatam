@@ -32,15 +32,9 @@ const editarTipoInversion = async (req, res = response) => {
     const {id} = req.params;
     const {nombre, descripcion, rendimiento} = req.body;
     try {
-        const tipoInversionExiste = await tiposInversionDAO.encontrarTipoInversionPorNombre(nombre);
-        if(tipoInversionExiste){
-            return res.status(400).json({message: "El tipo de inversión ya existe"});
-        }
-        else{
-            const tipoInversionEditar = {idTipo: id, nombre, descripcion, rendimiento};
-            const tipoInversionEditado = await tiposInversionDAO.editarTipoInversion(tipoInversionEditar);
-            res.status(200).json(tipoInversionEditado);
-        }
+        const tipoInversionEditar = {idTipo: id, nombre, descripcion, rendimiento};
+        const tipoInversionEditado = await tiposInversionDAO.editarTipoInversion(tipoInversionEditar);
+        res.status(200).json(tipoInversionEditado);
     } catch (error) {
         console.error(error);
         res.status(500).json({message: "No se pudo editar el tipo de inversión", error});

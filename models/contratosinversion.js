@@ -61,7 +61,7 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
     },
     fecha: {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
       allowNull: true,
     },
     importe: {
@@ -77,7 +77,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     ultimaActualizacion: {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     smsVerificacion: {
