@@ -61,7 +61,7 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
     },
     fecha: {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
       allowNull: true,
     },
     importe: {

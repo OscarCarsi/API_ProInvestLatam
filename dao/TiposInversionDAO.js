@@ -15,5 +15,8 @@ class TiposInversionDAO {
     static async eliminarTipoInversion(id) {
         return await TiposInversion.destroy({where: {idTipo: id}});
     }
+    static async encontrarTipoInversion(tipoInversion) {
+        return await TiposInversion.findOne(tipoInversion);
+    }
 }
 module.exports = TiposInversionDAO;
