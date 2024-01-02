@@ -77,7 +77,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     ultimaActualizacion: {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     smsVerificacion: {
