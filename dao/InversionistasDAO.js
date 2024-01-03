@@ -13,5 +13,12 @@ class InversionistasDAO {
     static async encontrarInversionistas() {
         return await Inversionistas.findAll();
     }
+    static async encontrarInversionistaPorIdInversionista(idInversionista){
+        return await Inversionistas.findOne({
+            where: {
+                idInversionista: idInversionista
+            }
+        });
+    }
 }
 module.exports = InversionistasDAO;
