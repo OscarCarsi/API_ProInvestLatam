@@ -11,7 +11,8 @@ const {
     agregarVerificacionesCorreo,
     agregarContratoCompletoContratoInversion,
     obtenerContratoPorIP,
-    obtenerContratoPorFolio
+    obtenerContratoPorFolio,
+    enviarCorreoVerificacion
 }  = require('../controllers/ContratosInversion');
 const {
     obtenerTodasLasColonias,
@@ -35,7 +36,7 @@ router.post('/contratosInversion', crearContratoInversion);
 router.put('/contratosInversion/:idInversionista', [validarJWT], editarInversionContratoInversion);
 router.put('/contratosInversion/estado/:idInversionista', [validarJWT], editarEstadoUltimaActualizacionContratoInversion);
 router.put('/contratosInversion/sms/:idInversionista', [validarJWT], agregarVerificacionesSms);
-router.put('/contratosInversion/correo/:idInversionista', [validarJWT], agregarVerificacionesCorreo);
+router.post('/contratosInversion/correo/:idInversionista', agregarVerificacionesCorreo);
 router.put('/contratosInversion/contrato/:idInversionista', [validarJWT], agregarContratoCompletoContratoInversion);
 router.post('/contratosInversion/obtenerIp', obtenerContratoPorIP);
 router.get('/contratosInversion/:folioInversion',  obtenerContratoPorFolio);
@@ -45,6 +46,7 @@ router.post('/expedientesInversionistas/:idDocumento/:idInversionista', [validar
 router.post('/informacionBancaria/:folioInversion', [validarJWT], crearInformacionBancaria);
 router.get('/origenesInversion',[validarJWT], obtenerOrigenesInversion);
 router.get('/tiposInversion', [validarJWT], obtenerTiposInversion);
+router.post('/contratosInversion/enviarCorreo/:idInversionista', [validarJWT], enviarCorreoVerificacion);
 
 
 router.get('/colonias', obtenerTodasLasColonias);

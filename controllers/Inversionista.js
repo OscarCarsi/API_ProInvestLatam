@@ -21,7 +21,7 @@ const anadirInformacionDomicilioInversionista = async (req, res = response) => {
     try {
         const inversionistaNuevo = await inversionistasDAO.añadirInformacionDomiciliaria(inversionista);
         const token = await generarJWT(direccionIP);
-        res.status(200).json({inversionista: inversionistaNuevo, token});
+        res.status(200).json({inversionistaNuevo, token});
     } catch (error) {
         console.error(error);
         res.status(500).json({message: error});
