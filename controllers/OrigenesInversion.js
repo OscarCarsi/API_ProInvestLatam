@@ -1,5 +1,6 @@
 const { response } = require('express');
 const origenesInversionDAO = require('../dao/OrigenesInversionDAO');
+const {generarJWT} = require('../helpers/crear-jwt-inversionista');
 
 const anadirOrigenInversion = async (req, res = response) => {
     const { nombre } = req.body;
@@ -20,6 +21,7 @@ const anadirOrigenInversion = async (req, res = response) => {
 
 const obtenerOrigenesInversion = async (req, res = response) => {
     try {
+        const direccionIp = req.body;
         const origenesInversion = await origenesInversionDAO.encontrarOrigenesInversion();
         const token = await generarJWT(direccionIp);
         res.status(200).json({ origenesInversion, token });

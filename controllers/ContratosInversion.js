@@ -24,7 +24,7 @@ const editarInversionContratoInversion = async (req, res = response) => {
     try {
         const contratoInversionNuevo = {idInversionista, idTipo, idOrigen, importe, plazoAnios};
         const contratoInversion = await contratosInversionDAO.editarContratoInversionista(contratoInversionNuevo);
-        res.status(200).json(contratoInversion);
+        res.status(200).json({contratoActualizado: contratoInversion});
     } catch (error) {
         console.error(error);
         res.status(500).json({message: "No se pudo editar el contrato de inversión", error});
@@ -70,7 +70,7 @@ const agregarContratoCompletoContratoInversion = async (req, res = response) => 
     try {
         const contratoInversionNuevo = {idInversionista, contrato};
         const contratoInversion = await contratosInversionDAO.editarContratoInversionista(contratoInversionNuevo);
-        res.status(200).json(contratoInversion);
+        res.status(200).json({contratoActualizado: contratoInversion});
     } catch (error) {
         console.error(error);
         res.status(500).json({message: "No se pudo agregar el contrato", error});
