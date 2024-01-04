@@ -17,7 +17,7 @@ const crearInformacionBancaria = async (req, res = response) => {
 const encontrarInformacionBancariaFolioInversion = async (req, res = response) => {
     const {folioInversion} = req.params;
     try {
-        const informacionBancaria = await informacionBancariaDAO.encontrarInformacionBancariaFolioInversion(folioInversion);
+        const informacionBancaria = await informacionBancariaDAO.encontrarInformacionBancariaFolio(folioInversion);
         res.status(200).json(informacionBancaria);
     } catch (error) {
         console.error(error);
