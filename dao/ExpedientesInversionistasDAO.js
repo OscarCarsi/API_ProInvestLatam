@@ -4,7 +4,12 @@ class ExpedientesInversionistasDAO{
         return await ExpedientesInversionistas.create(expedienteInversionista);
     }
     static async encontrarExpedientesInversionistasIdDocumentoIdInversionista(idDocumento,idInversionista){
-        return await ExpedientesInversionistas.findByPk(idDocumento,idInversionista);
+        return await ExpedientesInversionistas.findOne({
+            where: {
+                idDocumento: idDocumento,
+                idInversionista: idInversionista
+            }
+        });
     }
 }
 module.exports = ExpedientesInversionistasDAO;
