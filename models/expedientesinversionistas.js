@@ -23,7 +23,6 @@ module.exports = (sequelize, DataTypes) => {
         as: 'idInversionista',
         update: 'CASCADE', 
       },
-      unique: true,
       primaryKey: true
     },
     enlaceBucket: {
@@ -39,7 +38,6 @@ module.exports = (sequelize, DataTypes) => {
         as: 'idDocumento',
         update: 'CASCADE', 
       },
-      unique: true,
       primaryKey: true
     },
     nombreArchivo: {
