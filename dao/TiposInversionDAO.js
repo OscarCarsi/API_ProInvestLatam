@@ -1,9 +1,10 @@
-const {TiposInversion} = require('../models');
+const {TiposInversion, sequelize} = require('../models');
 class TiposInversionDAO {
     static async crearTipoInversion(tipoInversion) {
         return await TiposInversion.create(tipoInversion);
     }
     static async encontrarTiposInversion() {
+        await sequelize.query('EXEC BorrarContratos');
         return await TiposInversion.findAll();
     }
     static async encontrarTipoInversionPorNombre(nombre) {
