@@ -12,7 +12,7 @@ const {
     agregarContratoCompletoContratoInversion,
     obtenerContratoPorIP,
     obtenerContratoPorFolio,
-    enviarCorreoVerificacion
+    enviarCorreoVerificacion,
 }  = require('../controllers/ContratosInversion');
 const {
     obtenerTodasLasColonias,
@@ -45,9 +45,9 @@ router.get('/documentosExpediente', [validarJWT], encontrarDocumentosExpedienteI
 router.post('/expedientesInversionistas/:idDocumento/:idInversionista', [validarJWT], subirExpedienteInversionista);
 router.post('/informacionBancaria/:folioInversion', [validarJWT], crearInformacionBancaria);
 router.get('/origenesInversion',[validarJWT], obtenerOrigenesInversion);
-router.get('/tiposInversion', [validarJWT], obtenerTiposInversion);
+router.get('/tiposInversion', obtenerTiposInversion);
 router.post('/contratosInversion/enviarCorreo/:idInversionista', [validarJWT], enviarCorreoVerificacion);
-
+router.get('/tiposInversion', obtenerTiposInversion);
 
 router.get('/colonias', obtenerTodasLasColonias);
 router.post('/colonia/:cp', obtenerColoniasPorCodigoPostal);
